@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Dhruva Sambrani">
+  <title>DDI Protocols</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/black.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">DDI Protocols</h1>
+  <p class="subtitle">QIQP Group Talk</p>
+  <p class="author">Dhruva Sambrani</p>
+</section>
+
+<section>
+<section id="hypotheses-and-circuits" class="title-slide slide level1">
+<h1>Hypotheses and Circuits</h1>
+
+</section>
+<section id="hypothesis" class="slide level2">
+<h2>Hypothesis</h2>
+<p>A hypothesis is a statement which is assumed to be true. It can also predict certain <em>correlations</em>. Let’s represent a hypothesis by <span class="math inline">\(\mathcal{X}\)</span></p>
+</section>
+<section id="compatible-correlations" class="slide level2">
+<h2>Compatible Correlations</h2>
+<p>Correlations or observations which are explained by the hypothesis and do not contradict the hypothesis is known as the correlations compatible with the hypothesis. Let’s represent the set of correlations as <span class="math inline">\(S(\mathcal{X})\)</span>.</p>
+</section>
+<section id="falsification" class="slide level2">
+<h2>Falsification</h2>
+<p>A hypothesis is falsified when we observe something that is incorrectly predicted by the hypothesis. Mathematically, if <span class="math inline">\(\exists x | x \notin S(\mathcal{X})\)</span>, then <span class="math inline">\(\mathcal{X}\)</span>, and every other hypothesis <span class="math inline">\(\mathcal{Y}\)</span> such that <span class="math inline">\(S(\mathcal{Y})\subseteq S(\mathcal{X})\)</span>, is falsified.</p>
+</section>
+<section id="circuits" class="slide level2">
+<h2>Circuits</h2>
+<p>A Circuit is a sequence of channels which takes in a classical input and gives a classical output, but the channels it consists of may be quantum in nature. A Circuit is also <em>essentially</em> a hypothesis. It hypothesizes that given some input <span class="math inline">\(i\)</span>, it gives some output <span class="math inline">\(j\)</span> with probabilty <span class="math inline">\(p_{i|j}\)</span>.</p>
+</section>
+<section id="some-philosophy" class="slide level2">
+<h2>Some Philosophy</h2>
+<p>The definition of hypothesis is so general, that the very existence of something itself is a hypothesis and hence every statement is a hypothesis.</p>
+<div class="fragment">
+<p>And, the whole point of Science is to find <span class="math inline">\(x \notin S(\mathcal{X})\)</span> and then to find <span class="math inline">\(\mathcal{X&#39;}\)</span> such that <span class="math inline">\(S(\mathcal{X}) \subset S(\mathcal{X&#39;})\)</span> and <span class="math inline">\(x\in S(\mathcal{X&#39;})\)</span> and then some other dude will come and do that and so on and on…</p>
+</div>
+</section></section>
+<section>
+<section id="tomography" class="title-slide slide level1">
+<h1>Tomography</h1>
+<p><img data-src="tomography.png" /></p>
+</section>
+<section id="tomography-1" class="slide level2">
+<h2>Tomography</h2>
+<ol type="1">
+<li class="fragment">Send in some classical input</li>
+<li class="fragment">Generate the quantum state from the classical input</li>
+<li class="fragment">Send the quantum state through the channel</li>
+<li class="fragment">Measure the changed state</li>
+<li class="fragment">Get the classical output</li>
+<li class="fragment">Do it again</li>
+<li class="fragment">And AGAIN!</li>
+<li class="fragment">Find <span class="math inline">\(S(\mathcal{C})=p_{j|i}\)</span></li>
+<li class="fragment">Find the channel of best fit</li>
+</ol>
+</section>
+<section id="tomographic-corroboration" class="slide level2">
+<h2>Tomographic Corroboration</h2>
+<p>We give the ok to <span class="math inline">\(\mathcal{C_T}\)</span> if <span class="math inline">\(\{p_{j|i}\}\in S(\mathcal{C_T})\)</span>, which means that the correlations can be explained by <span class="math inline">\(\mathcal{C_T}\)</span>.</p>
+</section>
+<section id="the-cyclicity-of-tomography" class="slide level2">
+<h2>The cyclicity of Tomography</h2>
+<div class="fragment">
+<p>In tomography, you assume that <span class="math inline">\(\rho_i\)</span> and <span class="math inline">\(\pi_i\)</span> are well known.</p>
+</div>
+<div class="fragment">
+<p>But how can you be sure? You must have then applied tomography on those. This sets up a cyclic dependency for tomography.</p>
+</div>
+</section></section>
+<section>
+<section id="the-solution" class="title-slide slide level1">
+<h1>The Solution</h1>
+<p><strong>Data Driven Inference Protocol</strong></p>
+</section>
+<section class="slide level2">
+
+<h3 id="ddi-protocol">DDI Protocol</h3>
+<p>We aren’t sure if <span class="math inline">\(\rho_i\)</span> and <span class="math inline">\(\pi_j\)</span> are working correctly or not. So why not assume that they don’t work?</p>
+<div class="fragment">
+<p>Hence, our <em>Circuit</em> is going to look like this -</p>
+<figure>
+<img data-src="./ddi.png" alt="Maximum Ignorance" /><figcaption aria-hidden="true">Maximum Ignorance</figcaption>
+</figure>
+</div>
+</section>
+<section class="slide level2">
+
+<p>The crucial idea is that we extend the idea of corroboration so that the reconstruction of <span class="math inline">\(\mathcal{C}\)</span>, <span class="math inline">\(\mathcal{C_{DD}}\)</span> to be corroborated by <em>any</em> test that one may perform.</p>
+<p>That is, <em>regardless</em> of <span class="math inline">\(\{\rho_{i}\}\)</span> and <span class="math inline">\(\{\pi_j\}\)</span>, <span class="math inline">\(\{p_{j|i}\} \in S(\mathcal{C})\)</span></p>
+<p>This is clearly a stronger requirement. If a Channel is DDI corroborated, then it must also be tomographically corroborated.</p>
+</section>
+<section id="the-process" class="slide level2">
+<h2>The process</h2>
+<p>More precisely, the DDI protocol consists of obtaining a reconstruction by collecting many correlations <span class="math inline">\(\{p_{j|i}^{(k)}\}\)</span> by using a family of <span class="math inline">\(\{\rho_i^{(k)}\}_i\)</span> and <span class="math inline">\(\{\pi_j^{(k)}\}_j\)</span>. Then choose a reconstruction <span class="math inline">\(\mathcal{C}_{DD}\)</span> such that <span class="math inline">\(\{p_{j|i}^{(k)}\} \in S(\mathcal{C_{DD}})\)</span> for all k.</p>
+</section>
+<section id="non-uniqueness-of-smathcalc_dd" class="slide level2">
+<h2>Non Uniqueness of <span class="math inline">\(S(\mathcal{C_{DD}})\)</span></h2>
+<p>Obviously, for all <span class="math inline">\(\mathcal{C_{DD}&#39;}\)</span> where <span class="math inline">\(S(\mathcal{C_{DD}&#39;}) \supseteq S(\mathcal{C_{DD}})\)</span>, the condition is still satisfied.</p>
+<p>Hence, we choose the “minimal” reconstruction. That is, the channel that the correlations corroborate but can predict the least number of correlations apart from those.</p>
+</section>
+<section class="slide level2">
+
+<p>Mathematically, if <span class="math inline">\(\mathcal{D}\)</span> is the set of all possible reconstructions,</p>
+<p><span class="math display">\[
+\mathcal{C}_{DD} := \underset
+    {\substack
+        {\mathcal{C}\in\mathcal{D}\\
+        \{p_{j|i}^{(k)}\} \in S(\mathcal{C})
+        }
+    }
+    {\operatorname{arg\ min}}
+\text{Vol}(S(\mathcal{C}))
+\]</span></p>
+<p>Where <span class="math inline">\(\text{Vol}\)</span> is the volume of the set according to some metric.</p>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<pre><code>While in the data collection stage the experimentalist is assumed to have full knowledge of the apparatus (i.e., the states to prepare and the measurements to perform are known and trusted by the experimentalist), the inference stage does not require such a knowledge at all, as it uses only the correlations obtained without any reference about which states and measurements produced such correlations. In this sense, the narrative can be given as if a good experimentalist, perfectly knowing their laboratory, is trying to convince a very stubborn theoretician, who does not trust anything apart from the bare data, about the availability of a particular channel in their laboratory.</code></pre>
+</section></section>
+<section>
+<section id="the-quantum-case" class="title-slide slide level1">
+<h1>The Quantum Case</h1>
+<p><strong>of <span class="math inline">\(\mathbb{D}_2\)</span> covarient channels</strong></p>
+<p><em>Math and results</em></p>
+</section>
+<section id="mathbbd_2-covarient-channels" class="slide level2">
+<h2><span class="math inline">\(\mathbb{D}_2\)</span> covarient channels</h2>
+<p>Qubit dihedrally-covariant channels is a class of channels which contains the Pauli Matrices and the Amplitude dampening channels.</p>
+</section>
+<section class="slide level2">
+
+<p>The action of the channel on the Qubit state can be represented as: <span class="math display">\[
+\begin{align*}
+   \frac{1}{2} \begin{pmatrix}
+    \text{Tr}[\mathbb{I} \mathcal{C}(\mathbb{I})] &amp;  \text{Tr}[\mathbb{I} \mathcal{C}(\sigma_{x})] &amp; \text{Tr}[\mathbb{I} \mathcal{C}(\sigma_{y})] &amp; \text{Tr}[\mathbb{I} \mathcal{C}(\sigma_{z})] \\
+    \text{Tr}[\sigma_{x} \mathcal{C}(\mathbb{I})] &amp; \text{Tr}[\sigma_{x} \mathcal{C}(\sigma_{x})] &amp; \text{Tr}[\sigma_{x} \mathcal{C}(\sigma_{y})] &amp; \text{Tr}[\sigma_{x} \mathcal{C}(\sigma_{z})] \\
+     \text{Tr}[\sigma_{y} \mathcal{C}(\mathbb{I})] &amp; \text{Tr}[\sigma_{y} \mathcal{C}(\sigma_{x})] &amp; \text{Tr}[\sigma_{y} \mathcal{C}(\sigma_{y})] &amp; \text{Tr}[\sigma_{y} \mathcal{C}(\sigma_{z})] \\
+      \text{Tr}[\sigma_{z} \mathcal{C}(\mathbb{I})] &amp; \text{Tr}[\sigma_{z} \mathcal{C}(\sigma_{x})] &amp; \text{Tr}[\sigma_{z} \mathcal{C}(\sigma_{y})] &amp; \text{Tr}[\sigma_{z} \mathcal{C}(\sigma_{z})]
+    \end{pmatrix}
+  \vec{v}_{\rho}^{T}
+\end{align*}
+\]</span></p>
+<p>in the basis <span class="math inline">\(\{\mathbb{I}, \sigma_{x}, \sigma_{y}, \sigma_{z} \}\)</span>.</p>
+</section>
+<section class="slide level2">
+
+<p>For <span class="math inline">\(\mathbb{D}_2\)</span> channels, this reduces to</p>
+<p><span class="math display">\[
+\mathcal{C} = \begin{bmatrix}
+    1   &amp; 0   &amp; 0   &amp; 0\\
+    0   &amp; d_1 &amp; 0   &amp; 0\\
+    0   &amp; 0   &amp; d_2 &amp; 0\\
+    c_3 &amp; 0   &amp; 0   &amp; d_3\\
+\end{bmatrix}
+\]</span></p>
+<p>and they map the Bloch sphere into an ellipsoid with axes lengths <span class="math inline">\(\vec{d}\)</span> and translated by <span class="math inline">\(c_3\)</span>.</p>
+</section>
+<section id="parametrizing-smathbbd_2" class="slide level2">
+<h2>Parametrizing <span class="math inline">\(S(\mathbb{D}_2)\)</span></h2>
+<p>It turns out that <span class="math inline">\(S(\mathcal{C})\)</span> is given by</p>
+<p><span class="math display">\[S(\mathcal{C}) = \text{conv }[(0,1), \epsilon]\]</span></p>
+<p>and the <span class="math inline">\(\text{Vol}\)</span> is given by</p>
+<p><span class="math display">\[
+\text{Vol}(S(\mathcal{C})) = \begin{cases}
+    d_3, &amp; \text{if } d_2 \leq d_3\\
+    d_3+\frac{d_2^2 c_3}{\sqrt{d_2^2-d_3^2}}\arcsin{\frac{\sqrt{d_2^2-d_3^2}}{d_2}}, &amp; \text{otherwise}
+\end{cases}
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<p>It can be shown that among the parameters <span class="math inline">\(\vec{d}\)</span> and <span class="math inline">\(c_3\)</span> that characterize any given <span class="math inline">\(\mathbb{D}_2\)</span>-covariant channel <span class="math inline">\(\mathcal C\)</span>, which ones can be reconstructed by DD inference depends on the value of function <span class="math inline">\(\mu(\mathcal C)\)</span> given by <span class="math display">\[
+\mu(\mathcal C) :=\frac{1-c_3}{c_3}\frac{d_2^2-d_3^2}{d_3^2}
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<p>One has the following regimes:</p>
+<ol type="1">
+<li class="fragment">Regime <span class="math inline">\(\mu(\mathcal C) \le 0\)</span>: reconstruction of <span class="math inline">\(c_3\)</span> and <span class="math inline">\(d_3\)</span>;</li>
+<li class="fragment">Regime <span class="math inline">\(0 &lt; \mu(\mathcal C) &lt; 1\)</span>: reconstruction of <span class="math inline">\(d_2, d_3, c_3\)</span>;</li>
+<li class="fragment">Regime <span class="math inline">\(1 \le \mu(\mathcal C)\)</span>: reconstruction of <span class="math inline">\(d_2\)</span> and <span class="math inline">\(\frac{d_2^2-d^2_3}{c^2_3}\)</span></li>
+</ol>
+</section></section>
+<section>
+<section id="references" class="title-slide slide level1">
+<h1>References</h1>
+
+</section>
+<section class="slide level2">
+
+<p><span class="citation" data-cites="Buscemi_2019">(Buscemi and Dall’Arno 2019)</span> and <span class="citation" data-cites="Dall_Arno_2017">(Dall’Arno, Brandsen, and Buscemi 2017)</span></p>
+<p>Presentation made with Pandoc and revealjs</p>
+</section>
+<section class="slide level2">
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-Buscemi_2019" class="csl-entry" role="doc-biblioentry">
+Buscemi, Francesco, and Michele Dall’Arno. 2019. <span>“Data-Driven Inference of Physical Devices: Theory and Implementation.”</span> <em>New Journal of Physics</em> 21 (11): 113029. <a href="https://doi.org/10.1088/1367-2630/ab5003">https://doi.org/10.1088/1367-2630/ab5003</a>.
+</div>
+<div id="ref-Dall_Arno_2017" class="csl-entry" role="doc-biblioentry">
+Dall’Arno, Michele, Sarah Brandsen, and Francesco Buscemi. 2017. <span>“Device-Independent Tests of Quantum Channels.”</span> <em>Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences</em> 473 (2199): 20160721. <a href="https://doi.org/10.1098/rspa.2016.0721">https://doi.org/10.1098/rspa.2016.0721</a>.
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1190,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
